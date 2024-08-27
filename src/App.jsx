@@ -3,34 +3,18 @@ import React, { useEffect, useState } from "react";
 import Temperature from "./components/Temperature";
 import Highlights from "./components/Highlights";
 import { useDispatch, useSelector } from "react-redux";
-import { add } from "./store/weatherSlice";
+import { fetchWeatherData } from "./store/weatherSlice";
 
 function App() {
-  //const [city, setCity] = useState("New Delhi");
-  //const [weatherData, setWeatherData] = useState(null);
+
    const dispatch= useDispatch();
-  const weatherData=useSelector((state)=>state.weatherData);
+  const weatherData=useSelector((state)=>state.weatherData.data);
   const city= useSelector(state=>state.city);
+  //const weatherStatus = useSelector((state) => state.weatherData.status);
+  //const weatherError = useSelector((state) => state.weatherData.error);
 
   useEffect(() => { 
-    const fetchWeatherData = async () => {
-      const apiUrl = `https://api.weatherapi.com/v1/current.json?key=52656d58856e4421b2562827242608&q=${city}&aqi=no;`;
-
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error('Could not get data');
-        }
-        const data = await response.json();
-        console.log(data);
-        dispatch(add(data));
-        //setWeatherData(data);
-       } 
-      catch (error) {
-        console.log(error);
-       }
-    };
-    fetchWeatherData();
+    dispatch(fetchWeatherData(city));
   }, [city,dispatch]);
 
   return (

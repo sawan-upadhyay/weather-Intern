@@ -4,7 +4,7 @@ import { setCity } from "../store/citySlice";
 
 function Temperature() {
 
-  const weatherData = useSelector((state) => state.weatherData);
+  const weatherData = useSelector((state) => state.weatherData.data);
   const dispatch=useDispatch();
   const handleCityChange = (e) => {
     dispatch(setCity(e.target.value));

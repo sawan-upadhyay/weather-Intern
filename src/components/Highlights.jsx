@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function Highlights({ stats }) {
-  const weatherData = useSelector((state) => state.weatherData);
+  const weatherData = useSelector((state) => state.weatherData.data);
   let value;
   switch (stats.title) {
     case "Wind Status":

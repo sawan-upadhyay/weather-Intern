@@ -5,8 +5,13 @@ export const fetchWeatherData = createAsyncThunk(
     async (_, thunkAPI) => {
         const state = thunkAPI.getState();
         const city = state.city;
+        
+
         const apiUrl = `https://api.weatherapi.com/v1/current.json?key=52656d58856e4421b2562827242608&q=${city}&aqi=no;`;
       const response = await fetch(apiUrl);
+      if (!response.ok) {
+        return thunkAPI.rejectWithValue('Failed to fetch data');
+      }
       const data = await response.json();
       return data;
     }

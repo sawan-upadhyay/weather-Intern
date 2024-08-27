@@ -10,11 +10,10 @@ function App() {
    const dispatch= useDispatch();
   const weatherData=useSelector((state)=>state.weatherData.data);
   const city= useSelector(state=>state.city);
-  //const weatherStatus = useSelector((state) => state.weatherData.status);
-  //const weatherError = useSelector((state) => state.weatherData.error);
 
   useEffect(() => { 
-    dispatch(fetchWeatherData(city));
+   // if(city)
+    dispatch(fetchWeatherData());
   }, [city,dispatch]);
 
   return (

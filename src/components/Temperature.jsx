@@ -1,8 +1,13 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setCity } from "../store/citySlice";
 
-function Temperature({ setCity, stats }) {
+function Temperature() {
+
+  const weatherData = useSelector((state) => state.weatherData);
+  const dispatch=useDispatch();
   const handleCityChange = (e) => {
-    setCity(e.target.value);
+    dispatch(setCity(e.target.value));
   };
   return (
     <>
@@ -38,7 +43,7 @@ function Temperature({ setCity, stats }) {
       </div>
 
       <div className="flex justify-center">
-        {stats.isDay !== 0 ? (
+        {weatherData.current.is_day !== 0 ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -73,17 +78,17 @@ function Temperature({ setCity, stats }) {
 
       <div className="flex justify-center items-center text-slate-200 mt-8">
         <p className="font-semibold text-[55px] ">
-          {stats.temp}
+          {weatherData.current.temp_c}
           <span className="text-[33px]">°C</span>
         </p>
       </div>
 
       <div className="flex justify-center text-slate-300 mt-8 text-[25px] ">
-        {stats.condition}
+        {weatherData.current.condition.text}
       </div>
 
       <div className="flex justify-center text-slate-400 mt-5 text-[15px]">
-        Today &#183; {stats.time} | {stats.location}
+        Today &#183; {weatherData.location.localtime} | {weatherData.location.name}
       </div>
     </>
   );

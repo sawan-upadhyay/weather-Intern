@@ -2,12 +2,17 @@
 import React, { useEffect, useState } from "react";
 import Temperature from "./components/Temperature";
 import Highlights from "./components/Highlights";
+import { useDispatch, useSelector } from "react-redux";
+import { add } from "./store/weatherSlice";
 
 function App() {
-  const [city, setCity] = useState("New Delhi");
-  const [weatherData, setWeatherData] = useState(null);
-  useEffect(() => {
-   
+  //const [city, setCity] = useState("New Delhi");
+  //const [weatherData, setWeatherData] = useState(null);
+   const dispatch= useDispatch();
+  const weatherData=useSelector((state)=>state.weatherData);
+  const city= useSelector(state=>state.city);
+
+  useEffect(() => { 
     const fetchWeatherData = async () => {
       const apiUrl = `https://api.weatherapi.com/v1/current.json?key=52656d58856e4421b2562827242608&q=${city}&aqi=no;`;
 
@@ -18,28 +23,22 @@ function App() {
         }
         const data = await response.json();
         console.log(data);
-       setWeatherData(data);
-      } catch (error) {
-
+        dispatch(add(data));
+        //setWeatherData(data);
+       } 
+      catch (error) {
         console.log(error);
-      }
+       }
     };
     fetchWeatherData();
-  }, [city]);
+  }, [city,dispatch]);
 
   return (
+    <> check if screen blank
     <div className="bg-slate-800 h-screen flex justify-center  ">
       <div className="w-1/5 h-1/3 mt-40">
         {weatherData && (
           <Temperature
-            setCity={setCity}
-            stats={{
-              temp: weatherData.current.temp_c,
-              condition: weatherData.current.condition.text,
-              isDay: weatherData.current.is_day,
-              location: weatherData.location.name,
-              time: weatherData.location.localtime,
-            }}
           />
         )}
       </div>
@@ -51,30 +50,25 @@ function App() {
           <>
             <Highlights
               stats={{
-                title: "Wind Status",
-                value: weatherData.current.wind_mph,
+                title: "Wind Status",                
                 unit: "mph",
-                direction: weatherData.current.wind_dir,
               }}
             />
             <Highlights
               stats={{
                 title: "Humidity",
-                value: weatherData.current.humidity,
                 unit: "%",
               }}
             />
             <Highlights
               stats={{
                 title: "Visibility",
-                value: weatherData.current.vis_miles,
                 unit: "miles",
               }}
             />
             <Highlights
               stats={{
                 title: "Air Pressure",
-                value: weatherData.current.pressure_mb,
                 unit: "mb",
               }}
             />
@@ -82,6 +76,7 @@ function App() {
         )}
       </div>
     </div>
+    </>
   );
 }
 

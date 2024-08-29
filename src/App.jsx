@@ -5,22 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Login.jsx";
 import ProtectedRoute from "./components/Protected/ProtectedRoute";
 import Header from "./components/Header";
-// import Temperature from "./components/Temperature";
-// import Highlights from "./components/Highlights";
-// import { useDispatch, useSelector } from "react-redux";
-// import { fetchWeatherData } from "./store/weatherSlice";
 
 function App() {
-
-  //  const dispatch= useDispatch();
-  // const weatherData=useSelector((state)=>state.weatherData.data);
-  // const city= useSelector(state=>state.city);
-
-  // useEffect(() => { 
-  //  // if(city)
-  //   dispatch(fetchWeatherData());
-  // }, [city,dispatch]);
-
   return (
     <> 
      <Router>

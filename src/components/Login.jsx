@@ -29,7 +29,8 @@ const Login = () => {
 
 
     return (
-        <div className='bg-sky-200 space-y-4 p-5 rounded-md shadow-md m-10 w-72'>
+        
+        <div className='bg-sky-200  space-y-4 p-5 rounded-md shadow-md m-5 w-72'>
             <p className='font-semibold text-lg text-center'>Login Page</p>
 
             <div>

@@ -2,20 +2,20 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function Highlights({ stats }) {
-  const weatherData = useSelector((state) => state.weatherData.data);
+  const weatherData = useSelector((state) => state.weatherData);
   let value;
   switch (stats.title) {
     case "Wind Status":
-      value = weatherData.current.wind_mph;
+      value = weatherData.data.current.wind_mph;
       break;
     case "Humidity":
-      value = weatherData.current.humidity;
+      value = weatherData.data.current.humidity;
       break;
     case "Visibility":
-      value = weatherData.current.vis_miles;
+      value = weatherData.data.current.vis_miles;
       break;
     case "Air Pressure":
-      value = weatherData.current.pressure_mb;
+      value = weatherData.data.current.pressure_mb;
       break;
     default:
       value = null;
@@ -45,7 +45,7 @@ function Highlights({ stats }) {
               d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
             />
           </svg>
-          <div className="text-slate-200 ms-2">{weatherData.current.wind_dir}</div>
+          <div className="text-slate-200 ms-2">{weatherData.data.current.wind_dir}</div>
         </div>
       ) : null}
 

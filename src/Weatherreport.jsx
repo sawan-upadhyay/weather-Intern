@@ -4,16 +4,19 @@ import Highlights from "./components/Highlights";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWeatherData } from "./store/weatherSlice";
 import axios from "axios";
+import Dailyreport from "./components/Dailyreport";
 
 const Weatherreport = () => {
   const dispatch = useDispatch();
-  const weatherData = useSelector((state) => state.weatherData.data);
+  const weatherData = useSelector((state) => state.weatherData);
   const city = useSelector(state => state.city);
 
-  useEffect(() => {
-    dispatch(fetchWeatherData());
-  }, [city, dispatch]);
-
+  // useEffect(() => {
+  //   dispatch(fetchWeatherData());
+  //   console.log("hi i am s1");
+  // }, [city, dispatch]);
+  
+  //console.log(weatherData.data.forecast.forecastday[0].hour[1].time);
   const [userData, setUserData] = useState();
   useEffect(() => {
     getProfileData();
@@ -31,7 +34,7 @@ const Weatherreport = () => {
       .then((res) => {
 
         setUserData(res.data)
-        console.log("profile data", res)
+       // console.log("profile data", res)
       })
       .catch((err) => {
 
@@ -46,20 +49,21 @@ const Weatherreport = () => {
         <p >Name : {userData?.name || "N/A"} </p>
         <p>Email : {userData?.email || "N/A"}</p>
         <p>Role : {userData?.role || "N/A"}</p>
+        <p> {weatherData.status}</p>
       </div>
-
+      
       <div className="bg-slate-800 flex   justify-center  min-h-screen flex-col md:flex-row md:justify-center items-start">
         <div className=" w-full md:w-1/3 md:h-1/3  mt-12 md:mt-40 ">
-          {weatherData && (
+          {weatherData.data && (
             <Temperature
             />
           )}
         </div>
-        <div className="w-full md:w-1/2 h-1/3 mt-40 p-10 grid md:grid md:grid-cols-2 md:gap-6">
+         <div className={`${weatherData.status=='succeeded' ? 'visible' : 'invisible'} w-full md:w-1/2 h-1/3 mt-40 p-10 grid md:grid md:grid-cols-2 md:gap-6`}>
           <h1 className="text-slate-200 text-2xl mb-1 text-center col-span-2">
             Today's Highlights
           </h1>
-          {weatherData && (
+          {weatherData.data && (
             <>
               <Highlights stats={{ title: "Wind Status", unit: "mph", }} />
               <Highlights stats={{title: "Humidity", unit: "%",}}/>

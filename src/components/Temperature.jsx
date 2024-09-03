@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCity } from "../store/citySlice";
 
 function Temperature() {
-
-  const weatherData = useSelector((state) => state.weatherData.data);
+ const city=useSelector((state)=>state.city);
+  const weatherData = useSelector((state) => state.weatherData);
   const dispatch=useDispatch();
   const handleCityChange = (e) => {
     dispatch(setCity(e.target.value));
@@ -17,7 +17,7 @@ function Temperature() {
           className="bg-slate-600 border border-slate-500 text-slate-200 placeholder-slate-400 text-md focus:border-slate-400 block w-60 p-2 focus:outline-none"
           placeholder="Enter Your City Name"
           onChange={handleCityChange}
-          defaultValue="New Delhi"
+          value={city}
         />
         <div className="m-4">
           <svg
@@ -42,8 +42,9 @@ function Temperature() {
         </div>
       </div>
 
-      <div className="flex justify-center">
-        {weatherData.current.is_day !== 0 ? (
+      { weatherData.status=='succeeded'&& ( <>
+        <div className="flex justify-center">
+        { weatherData.data.current.is_day !== 0 ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -51,14 +52,14 @@ function Temperature() {
             strokeWidth={1.5}
             stroke="currentColor"
             className="w-14 h-14 text-yellow-300 mt-8"
-          >
+           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
             />
           </svg>
-        ) : (
+         )  : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -73,23 +74,24 @@ function Temperature() {
               d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
             />
           </svg>
-        )}
+         )}
       </div>
 
       <div className="flex justify-center items-center text-slate-200 mt-8">
         <p className="font-semibold text-[55px] ">
-          {weatherData.current.temp_c}
+          {weatherData.data.current.temp_c}
           <span className="text-[33px]">°C</span>
         </p>
       </div>
 
       <div className="flex justify-center text-slate-300 mt-8 text-[25px] ">
-        {weatherData.current.condition.text}
+        {weatherData.data.current.condition.text}
       </div>
 
       <div className="flex justify-center text-slate-400 mt-5 text-[15px]">
-        Today &#183; {weatherData.location.localtime} | {weatherData.location.name}
+        Today &#183; {weatherData.data.location.localtime} | {weatherData.data.location.name}
       </div>
+      </> ) }
     </>
   );
 }

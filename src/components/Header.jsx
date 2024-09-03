@@ -19,6 +19,7 @@ const Header = () => {
             <div className='h-10  border-b border-red-300 bg-blue-500 text-white  flex justify-center items-center space-x-5'>
                 <Link className='hover:border-b-2 hover:border-red-500' to="/">Home</Link>
                 <Link className='hover:border-b-2 hover:border-red-500' to="/weatherreport">Weather Report</Link>
+                <Link className='hover:border-b-2 hover:border-red-500' to="/dailyreport">Daily-Weekly-Report</Link>
                 {token ?
                     <p onClick={handleLogout} className='hover:cursor-pointer text-white border px-2
                 py-1 bg-red-500'>Logout</p>

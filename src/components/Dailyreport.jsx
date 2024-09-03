@@ -60,7 +60,7 @@ function Dailyreport() {
             <>
             <div className='h-screen bg-slate-800 text-white font-bold text-center'>
               Weekly Weather Forecast
-            <div className='flex flex-row flex-wrap gap-4 justify-around items-center text-white mt-4 bg-teal-400'>
+            <div className='flex flex-row flex-wrap gap-y-10 justify-around items-center text-white mt-4 bg-teal-400'>
 
           { forecast && forecast.map((da,index)=>(
             <div key={Math.random()} className='flex flex-col items-center '>
@@ -74,14 +74,14 @@ function Dailyreport() {
             
           </div>
           <div className='text-center font-bold text-white mt-14'> Daily 24 Hour Weather</div>
-        <div className='flex flex-row flex-wrap gap-y-1 space-x-2 justify-center bg-slate-800  text-white h-screen items-center max-h-[50vh] pt-0' >
+        <div className='flex flex-row flex-wrap gap-y-1 space-x-2 justify-center bg-slate-800  text-white h-screen items-center  pt-0' >
            
             {
               dats?.map((dat, index) => (
                 <div key={index} className='flex flex-col items-center space-y-1 m-0'>
                         <p>{dat.time.split(' ')[1]}</p>
                         <img className='w-12 h-12' src={`${dat.condition.icon}`} />
-                        <p> {dat.temp_c}</p>
+                        <p> {dat.temp_c}°C</p>
 
                     </div>
                 ))

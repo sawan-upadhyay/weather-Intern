@@ -5,10 +5,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Login.jsx";
 import ProtectedRoute from "./components/Protected/ProtectedRoute";
 import Header from "./components/Header";
-import Dailyreport from "./components/Dailyreport.jsx";
+import Weeklyreport from "./components/Weeklyreport.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWeatherData } from "./store/weatherSlice.js";
 import Homepage from "./components/Homepage.jsx";
+import DetailDaily from "./components/DetailDaily.jsx";
+
 
 function App() {
   const city = useSelector(state => state.city);
@@ -22,14 +24,18 @@ function App() {
     <> 
      <Router>
         <Header />
+        {/* <div> HI I AM VARUN</div> */}
         <Routes>
           <Route element={<ProtectedRoute />}>
             <Route path="/weatherreport" element={<Weatherreport />} />
-            <Route path="/dailyreport" element={<Dailyreport />} />
+            <Route path="/dailyreport" element={<Weeklyreport />} />
+            <Route path="/detaildaily" element={<DetailDaily />} />
+
           </Route>
           
           <Route path="/" element={<Homepage/>} />
           <Route path="/login" element={<Login />} />
+         
         </Routes>
       </Router>
     

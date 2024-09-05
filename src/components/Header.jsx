@@ -30,6 +30,7 @@ const Header = () => {
                     :
                     <Link className='hover:border-b-2 hover:border-red-500' to="/login">Login</Link>
                 }
+                <Link className='hover:border-b-2 hover:border-red-500' to="/dataeg">Practise-Data-Table</Link>
             </div>
         </>
     )

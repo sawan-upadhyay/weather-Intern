@@ -2,33 +2,61 @@ import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 
 // EditableCell component
-const EditableCell = ({ value, onSave, onCancel, isEditing }) => {
-  const [inputValue, setInputValue] = useState(value);
+// const EditableCell = ({ value, onSave, onCancel, isEditing }) => {
+//   const [inputValue, setInputValue] = useState(value);
 
-  const handleSave = () => {
-    onSave(inputValue);
-  };
+//   const handleSave = () => {
+//     onSave(inputValue);
+//   };
 
-  return (
-    <div>
-      {isEditing ? (
-        <>
-          <input
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-          <button className='border bg-green-500 border-solid mx-1 p-1 w-16 font-semibold' onClick={handleSave}>Save</button>
-          <button className='border bg-red-600 border-solid p-1 w-16 font-semibold' onClick={onCancel}>Cancel</button>
-        </>
-      ) : (
-        value
-      )}
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       {isEditing ? (
+//         <>
+//           <input
+//             type="text"
+//             value={inputValue}
+//             onChange={(e) => setInputValue(e.target.value)}
+//           />
+//           <button className='border bg-green-500 border-solid mx-1 p-1 w-16 font-semibold' onClick={handleSave}>Save</button>
+//           <button className='border bg-red-600 border-solid p-1 w-16 font-semibold' onClick={onCancel}>Cancel</button>
+//         </>
+//       ) : (
+//         value
+//       )}
+//     </div>
+//   );
+// };
 
 const Dataeg = () => {
+
+  const EditableCell = ({ value, onSave, onCancel, isEditing }) => {
+    const [inputValue, setInputValue] = useState(value);
+  
+    const handleSave = () => {
+      onSave(inputValue);
+    };
+  
+    return (
+      <div>
+        {isEditing ? (
+          <>
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+            <button className='border bg-green-500 border-solid mx-1 p-1 w-16 font-semibold' onClick={handleSave}>Save</button>
+            <button className='border bg-red-600 border-solid p-1 w-16 font-semibold' onClick={onCancel}>Cancel</button>
+          </>
+        ) : (
+          value
+        )}
+      </div>
+    );
+  };
+
+
     // Sample data
     const [data, setData] = useState([]);
     useEffect(()=>{

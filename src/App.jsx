@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchWeatherData } from "./store/weatherSlice.js";
 import Homepage from "./components/Homepage.jsx";
 import DetailDaily from "./components/DetailDaily.jsx";
+import Dataeg from "./components/Dataeg.jsx";
 
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
           
           <Route path="/" element={<Homepage/>} />
           <Route path="/login" element={<Login />} />
-         
+          <Route path="/dataeg" element={<Dataeg/>} />
         </Routes>
       </Router>
     

@@ -16,7 +16,7 @@ const Header = () => {
 
     return (
         <>
-            <div className='h-10  border-b border-red-300 bg-emerald-100   flex justify-center items-center space-x-5 text-black font-semibold'>
+            <div className='h-10  border-b border-red-300 bg-emerald-200   flex justify-center items-center space-x-5 text-black font-semibold'>
                 <Link className='hover:border-b-2 hover:border-red-500' to="/">Home</Link>
                 <Link className='hover:border-b-2 hover:border-red-500' to="/weatherreport">Weather Report</Link>
                 <Link className='hover:border-b-2 hover:border-red-500' to="/dailyreport">Weekly-Report</Link>

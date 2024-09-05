@@ -119,14 +119,14 @@ function Weeklyreport() {
       },
     },
   };
-  if (weatherData.status == 'idle' || weatherData.status == 'loading')
+  if (!forecast)
     return (<Loading />);
 
   return (
     <>
 
 
-      {forecast && <DataTable
+      { <DataTable
         title=""
         columns={columns}
         data={filterForecast}
@@ -136,12 +136,12 @@ function Weeklyreport() {
         fixedHeader
         responsive={true}
         subHeader
-        subHeaderComponent={<div className="w-full flex justify-between items-center">
+        subHeaderComponent={<div className="w-full flex flex-wrap justify-between items-center">
           <h1 className="text-2xl font-bold">Weather Weekly Report</h1>
           <input
             type="text"
             placeholder="Search for Minimum temp..."
-            className="w-1/3 border border-gray-300 rounded-lg"
+            className="w-1/3 border border-slate-900 bg-green-300 font-semibold rounded-lg"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />

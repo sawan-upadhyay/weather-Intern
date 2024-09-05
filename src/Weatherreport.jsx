@@ -37,8 +37,7 @@ const Weatherreport = () => {
         console.log("Error occured", err)
       })
   }
-  if(weatherData.status=='idle' || weatherData.status=='loading')
-    return (<Loading/>);
+ 
 
   return (
     <>

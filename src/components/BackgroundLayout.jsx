@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux'
 const BackgroundLayout = () => {
 
   const weatherData= useSelector(state=>state.weatherData.data);
-  const [image, setImage] = useState(Clear);
+  const [image, setImage] = useState('');
 
   useEffect(() => {
     if (weatherData) {

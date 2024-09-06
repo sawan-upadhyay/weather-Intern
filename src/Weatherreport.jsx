@@ -7,6 +7,7 @@ import axios from "axios";
 import Dailyreport from "./components/Weeklyreport";
 import { Link } from "react-router-dom";
 import Loading from "./components/Loading";
+import Stormy from "./assets/weatherimg.jpg";
 
 const Weatherreport = () => {
   const dispatch = useDispatch();
@@ -41,21 +42,22 @@ const Weatherreport = () => {
 
   return (
     <>
-      <div className=" bg-blue-300 p-4 flex flex-col md:flex-row md:justify-between items-center font-bold text-center md:text-left">
+      <div className=" text-gray-400 p-4 flex flex-col md:flex-row md:justify-between items-center font-bold text-center md:text-left">
         <p >Name : {userData?.name || "N/A"} </p>
         <p>Email : {userData?.email || "N/A"}</p>
         <p>Role : {userData?.role || "N/A"}</p>
         <p> {weatherData.status}</p>
       </div>
-      <div className="p-4 bg-slate-800">
+      <div className="p-4 ">
         <Link to="/detaildaily">
-          <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">
+          <button className="bg-amber-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">
             Go to Detail Weather
           </button>
         </Link>
       </div>
+      <img src={Stormy} className="blur  fixed -z-[10] h-screen w-full top-0 left-0" />
 
-      <div className="bg-slate-800 flex   justify-center  min-h-screen flex-col md:flex-row md:justify-center items-start">
+      <div className=" flex  justify-center  min-h-screen flex-col md:flex-row md:justify-center items-start">
         <div className=" w-full md:w-1/3 md:h-1/3  mt-12 md:mt-40 ">
           {weatherData.data && (
             <Temperature

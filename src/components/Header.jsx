@@ -16,15 +16,15 @@ const Header = () => {
 
     return (
         <>
-            <div className='h-10  border-b border-red-300 bg-emerald-200   flex justify-center items-center space-x-5 text-black font-semibold'>
+            <div className='bg-blue-600 text-white  shadow-md h-auto min-h-16 flex-wrap border-b border-red-300    flex justify-center items-center space-x-5  font-semibold'>
                 <Link className='hover:border-b-2 hover:border-red-500' to="/">Home</Link>
                 <Link className='hover:border-b-2 hover:border-red-500' to="/weatherreport">Weather Report</Link>
                 <Link className='hover:border-b-2 hover:border-red-500' to="/dailyreport">Weekly-Report</Link>
                 {token ?
                    ( <>
-                    <p  className=' text-white border px-2
+                    <p  className='max-h-8 rounded-xl text-white border px-2
                 py-1 bg-orange-400'>You are Logged in</p>
-                   <p onClick={handleLogout} className='hover:cursor-pointer text-white border px-2
+                   <p onClick={handleLogout} className=' rounded-xl max-h-8 text-center hover:cursor-pointer text-white border px-2
                 py-1 bg-red-500'>Logout</p>
                 </>)
                     :

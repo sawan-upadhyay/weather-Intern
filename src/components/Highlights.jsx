@@ -22,7 +22,7 @@ function Highlights({ stats }) {
   }
 
   return (
-    <div className="bg-slate-600 p-2  text-slate-200 flex flex-col justify-start items-center ">
+    <div className=" p-2  text-slate-200 flex flex-col justify-start items-center ">
       <h2 className="text-sm mt-2">{stats.title}</h2>
       <div className="mt-2">
         {" "}

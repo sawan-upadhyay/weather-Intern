@@ -11,6 +11,7 @@ function Weeklyreport() {
   const dats = weatherData.data?.forecast.forecastday[0].hour;
   const [forecast, setForecast] = useState([]);
   const [search, setSearch] = useState('');
+  const [filterType,setFilterType]=useState('temp')
   const [filterForecast, setFilterForecast] = useState([]);
   const days = [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27];
 
@@ -54,10 +55,20 @@ function Weeklyreport() {
 
   useEffect(() => {
     let result = 0;
-    if (!isNaN(search)) {
-      result = forecast.filter((obj) => Number(obj.forecast.forecastday[0].day.avgtemp_c) > Number(search));
-      setFilterForecast(result);
-    }
+    // if (!isNaN(search)) {
+    //   result = forecast.filter((obj) => Number(obj.forecast.forecastday[0].day.avgtemp_c) > Number(search));
+    //   setFilterForecast(result);
+    const lowerSearch = search.toLowerCase();
+      const filtered = forecast.filter(row => {
+        if (filterType === 'temp') {
+          return row.forecast.forecastday[0].day.avgtemp_c.toString().includes(lowerSearch);
+        } else if (filterType === 'condition') {
+          return  row.forecast.forecastday[0].day.condition.text.toLowerCase().includes(lowerSearch);
+        }
+        return true;
+      });
+      setFilterForecast(filtered);
+    
 
   }, [search])
 
@@ -125,8 +136,7 @@ function Weeklyreport() {
   return (
     <>
 
-
-      { <DataTable
+       <DataTable
         title=""
         columns={columns}
         data={filterForecast}
@@ -136,17 +146,26 @@ function Weeklyreport() {
         fixedHeader
         responsive={true}
         subHeader
-        subHeaderComponent={<div className="w-full flex flex-wrap justify-between items-center">
+        subHeaderComponent={<div className="mt-2 w-full flex flex-wrap justify-between items-center">
           <h1 className="text-2xl font-bold">Weather Weekly Report</h1>
+          <select
+        className="border bg-orange-50 rounded-lg "
+        value={filterType}
+        onChange={(e) => setFilterType(e.target.value)}
+      >
+        <option value="temp">Temperature</option>
+        <option value="condition">Condition</option>
+      </select>
           <input
             type="text"
-            placeholder="Search for Minimum temp..."
-            className="w-1/3 border border-slate-900 bg-green-300 font-semibold rounded-lg"
+            placeholder= {`Search by ${filterType.toLowerCase()}...`}
+            className="w-1/3 border border-slate-900 bg-orange-100 font-semibold rounded-lg"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-          />
+            />
         </div>}
-      />}
+      />
+     
     </>
   )
 }

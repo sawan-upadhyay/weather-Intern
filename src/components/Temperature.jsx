@@ -14,7 +14,7 @@ function Temperature() {
       <div className="flex align-middle justify-center">
         <input
           type="text"
-          className="bg-slate-600 border border-slate-500 text-slate-200 placeholder-slate-400 text-md focus:border-slate-400 block w-60 p-2 focus:outline-none"
+          className="hover:bg-gray-950 bg-transparent border border-slate-500 text-slate-200 placeholder-slate-400 text-md focus:border-slate-400 block w-60 p-2 focus:outline-none"
           placeholder="Enter Your City Name"
           onChange={handleCityChange}
           value={city}
@@ -84,11 +84,11 @@ function Temperature() {
         </p>
       </div>
 
-      <div className="flex justify-center text-slate-300 mt-8 text-[25px] ">
+      <div className="font-semibold text-6xl  flex justify-center text-slate-300 mt-8 text-[25px] ">
         {weatherData.data.current.condition.text}
       </div>
 
-      <div className="flex justify-center text-slate-400 mt-5 text-[15px]">
+      <div className=" text-4xl font-semibold flex justify-center text-slate-300 mt-5 text-[15px]">
         Today &#183; {weatherData.data.location.localtime} | {weatherData.data.location.name}
       </div>
       </> ) }

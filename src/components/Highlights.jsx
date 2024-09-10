@@ -22,7 +22,7 @@ function Highlights({ stats }) {
   }
 
   return (
-    <div className=" p-2  text-slate-200 flex flex-col justify-start items-center ">
+    <div className=" p-2 font-semibold text-slate-200 flex flex-col justify-start items-center  transition-transform duration-300 opacity-70 hover:opacity-100 hover:backdrop-blur-xl shadow-2xl">
       <h2 className="text-sm mt-2">{stats.title}</h2>
       <div className="mt-2">
         {" "}

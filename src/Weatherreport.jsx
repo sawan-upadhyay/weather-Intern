@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Temperature from "./components/Temperature";
 import Highlights from "./components/Highlights";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchWeatherData } from "./store/weatherSlice";
+
 import axios from "axios";
-import Dailyreport from "./components/Weeklyreport";
+
 import { Link } from "react-router-dom";
 import Loading from "./components/Loading";
 import Stormy from "./assets/weatherimg.jpg";
@@ -55,9 +55,9 @@ const Weatherreport = () => {
           </button>
         </Link>
       </div>
-      <img src={Stormy} className="blur  fixed -z-[10] h-screen w-full top-0 left-0" />
+      <img src={Stormy} className="blur-sm bg-opacity-50 fixed -z-[10] h-screen w-full top-0 left-0" />
 
-      <div className=" flex  justify-center  min-h-screen flex-col md:flex-row md:justify-center items-start">
+      <div className=" flex text-xl justify-center  min-h-screen flex-col md:flex-row md:justify-center items-start">
         <div className=" w-full md:w-1/3 md:h-1/3  mt-12 md:mt-40 ">
           {weatherData.data && (
             <Temperature
@@ -65,7 +65,7 @@ const Weatherreport = () => {
           )}
         </div>
         <div className={`${weatherData.status == 'succeeded' ? 'visible' : 'invisible'} w-full md:w-1/2 h-1/3 mt-40 p-10 grid md:grid md:grid-cols-2 md:gap-6`}>
-          <h1 className="text-slate-200 text-2xl mb-1 text-center col-span-2">
+          <h1 className="text-white  font-bold text-4xl mb-1 text-center col-span-2">
             Today's Highlights
           </h1>
           {weatherData.data && (

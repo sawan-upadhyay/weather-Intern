@@ -14,7 +14,7 @@ function Temperature() {
       <div className="flex align-middle justify-center">
         <input
           type="text"
-          className="hover:bg-gray-950 bg-transparent border border-slate-500 text-slate-200 placeholder-slate-400 text-md focus:border-slate-400 block w-60 p-2 focus:outline-none"
+          className="hover:bg-opacity-60 bg-transparent backdrop-blur-none border border-slate-500 text-slate-200 placeholder-slate-400 text-md focus:border-slate-400 block w-2/3 md:w-60 p-2 focus:outline-none transition-all duration-300"
           placeholder="Enter Your City Name"
           onChange={handleCityChange}
           value={city}
@@ -43,7 +43,7 @@ function Temperature() {
       </div>
 
       { weatherData.status=='succeeded'&& ( <>
-        <div className="flex justify-center">
+        <div className="flex justify-center ">
         { weatherData.data.current.is_day !== 0 ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ function Temperature() {
          )}
       </div>
 
-      <div className="flex justify-center items-center text-slate-200 mt-8">
+      <div className="flex justify-center items-center text-slate-200 mt-8 ">
         <p className="font-semibold text-[55px] ">
           {weatherData.data.current.temp_c}
           <span className="text-[33px]">°C</span>

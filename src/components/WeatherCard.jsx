@@ -10,7 +10,7 @@ const WeatherCard = () => {
   const weatherData=useSelector(state=>state.weatherData.data);
 
   return (
-    weatherData && <div className='w-[22rem] min-w-[22rem] h-[30rem] glassCard p-4'>
+    weatherData && <div className='w-[22rem] min-w-[20rem] h-[30rem] glassCard p-4 backdrop-blur-sm border border-slate-400 shadow-lg transform transition-transform hover:scale-105'>
       <div className='flex w-full just-center, items-center gap-4 mt-12 mb-4'>
         <img src={weatherData.forecast.forecastday[0].day.condition.icon} alt="weather_icon" />
         <p className='font-bold text-5xl flex justify-center items-center' >{weatherData.current.temp_c} &deg;C</p>
